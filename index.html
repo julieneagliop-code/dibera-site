@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delibera · Gestão e transparência para conselhos de direitos</title>
+<meta name="description" content="Plataforma para o CMDCA e o CMI gerenciarem a captação de projetos por destinação direta, publicarem o que a lei exige e gerarem o relatório semestral da Lei 15.426/2026.">
+<meta name="theme-color" content="#17363f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Prévia no WhatsApp, e-mail e redes. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Delibera">
+<meta property="og:title" content="Delibera · Gestão e transparência para conselhos de direitos">
+<meta property="og:description" content="Do edital à prestação de contas: inscrição, chancela, captação e o relatório semestral exigido pela Lei 15.426/2026.">
+<meta property="og:url" content="https://deliberaconselhos.com.br/">
+<meta property="og:image" content="https://deliberaconselhos.com.br/og-delibera.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Delibera, plataforma para o CMDCA e o CMI">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html, body { margin: 0; }
+img { max-width: 100%; }
+/* Layout: uma "ata" editorial em faixas largas; a capa é um quadro de projetos chancelados ao vivo, depois vêm o relatório semestral, o painel do conselho e o acompanhamento público dos projetos. */
+:root {
+  --papel: #ffffff;
+  --papel-2: #f6f3ee;
+  --areia: #efebe4;
+  --tinta: #2b2b2b;
+  --tinta-2: #646464;
+  --linha: #dcd6cc;
+  --marca: #17363f;
+  --acento: #e08a2c;
+  --acento-texto: #9c5410;
+  --hero: #17363f;
+  --hero-2: #10262d;
+  --hero-tinta: #f4efe6;
+  --hero-tinta-2: #c9d4d6;
+  --hero-rotulo: #e6c08a;
+  --hero-linha: #2c5260;
+  --faixa: #e08a2c;
+  --faixa-tinta: #10262d;
+  --barra-fundo: #efebe4;
+  --sim: #e6c08a;
+  --btn-bg: #17363f;
+  --btn-tinta: #f4efe6;
+  --foco: #17363f;
+
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-texto: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --f-rotulo: "IBM Plex Mono", Menlo, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #11252b; --papel-2: #163039; --areia: #1d3a42; --tinta: #ece7de; --tinta-2: #a9b4b6; --linha: #2c4a52;
+    --marca: #f4efe6; --acento: #e08a2c; --acento-texto: #eba253; --hero: #0b1a1f; --hero-2: #071216;
+    --hero-tinta: #f4efe6; --hero-tinta-2: #c9d4d6; --hero-rotulo: #e6c08a; --hero-linha: #1f3a42;
+    --faixa: #e08a2c; --faixa-tinta: #10262d; --barra-fundo: #1d3a42; --sim: #e6c08a;
+    --btn-bg: #e08a2c; --btn-tinta: #10262d; --foco: #e08a2c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --papel: #11252b; --papel-2: #163039; --areia: #1d3a42; --tinta: #ece7de; --tinta-2: #a9b4b6; --linha: #2c4a52;
+  --marca: #f4efe6; --acento: #e08a2c; --acento-texto: #eba253; --hero: #0b1a1f; --hero-2: #071216;
+  --hero-tinta: #f4efe6; --hero-tinta-2: #c9d4d6; --hero-rotulo: #e6c08a; --hero-linha: #1f3a42;
+  --faixa: #e08a2c; --faixa-tinta: #10262d; --barra-fundo: #1d3a42; --sim: #e6c08a;
+  --btn-bg: #e08a2c; --btn-tinta: #10262d; --foco: #e08a2c; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--papel); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; }
+
+.faixa-inner { max-width: 1160px; margin-inline: auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+section { padding-block: clamp(56px, 9vw, 112px); }
+.rotulo { font-family: var(--f-rotulo); font-size: 12.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--acento-texto); }
+.titulo { font-size: clamp(30px, 4.6vw, 52px); line-height: 1.08; color: var(--marca); max-width: 25ch; text-wrap: balance; }
+.cabeca { display: grid; gap: 14px; margin-bottom: clamp(32px, 5vw, 56px); }
+.cabeca .fio { width: 56px; height: 3px; background: var(--acento); }
+.lead { font-size: clamp(17px, 2vw, 20px); color: var(--tinta-2); max-width: 60ch; }
+
+/* ---------- Capa ---------- */
+.capa { background: var(--hero); color: var(--hero-tinta); padding-block: clamp(40px, 7vw, 88px) clamp(48px, 8vw, 96px); position: relative; overflow: hidden; }
+.capa-topo { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: clamp(40px, 7vw, 80px); flex-wrap: wrap; }
+.marca { display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 700; font-size: 20px; color: var(--hero-tinta); }
+.marca svg { width: 30px; height: 30px; }
+.para { font-family: var(--f-rotulo); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--hero-rotulo); border: 1px solid var(--hero-linha); padding: 8px 12px; }
+.capa-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.capa h1 { font-size: clamp(58px, 11vw, 132px); line-height: .92; letter-spacing: -.02em; color: var(--hero-tinta); display: flex; align-items: center; gap: .14em; }
+.capa h1 svg { width: .62em; height: .62em; flex: none; }
+.capa .sub { font-size: clamp(20px, 2.6vw, 28px); line-height: 1.3; color: var(--hero-tinta-2); margin-top: 22px; max-width: 30ch; font-family: var(--f-display); font-weight: 400; text-wrap: balance; }
+.capa .eyebrow { color: var(--hero-rotulo); margin-bottom: 18px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 600 16px/1 var(--f-texto); padding: 15px 22px; text-decoration: none; border: 2px solid transparent; cursor: pointer; }
+.btn-acento { background: var(--acento); color: var(--faixa-tinta); }
+.btn-linha { border-color: var(--hero-tinta-2); color: var(--hero-tinta); background: transparent; }
+.btn-escuro { background: var(--btn-bg); color: var(--btn-tinta); }
+.btn:hover { filter: brightness(1.06); }
+
+.livro { background: var(--hero-2); padding: clamp(20px, 3vw, 32px); }
+.livro-cab { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--hero-linha); }
+.livro-cab span:first-child { font-family: var(--f-rotulo); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--hero-rotulo); }
+.livro-cab span:last-child { font-size: 13px; color: var(--hero-tinta-2); }
+.proj { padding-block: 16px; border-bottom: 1px solid var(--hero-linha); display: grid; gap: 8px; }
+.proj-top { display: flex; justify-content: space-between; gap: 12px; }
+.proj-nome { font-family: var(--f-display); font-size: 18px; color: var(--hero-tinta); min-width: 0; }
+.proj-pct { font-family: var(--f-rotulo); font-size: 14px; color: var(--hero-rotulo); font-variant-numeric: tabular-nums; }
+.proj-meta { font-size: 13px; color: var(--hero-tinta-2); font-variant-numeric: tabular-nums; }
+.trilho { height: 8px; background: var(--hero-linha); position: relative; overflow: hidden; }
+.trilho i { position: absolute; inset: 0 auto 0 0; background: var(--acento); transform-origin: left; animation: encher 1.4s cubic-bezier(.2,.7,.2,1) both; }
+.proj:nth-child(3) .trilho i { animation-delay: .15s; } .proj:nth-child(4) .trilho i { animation-delay: .3s; }
+@keyframes encher { from { transform: scaleX(.15); } to { transform: scaleX(1); } }
+.livro-rodape { font-size: 12.5px; color: var(--hero-tinta-2); padding-top: 12px; }
+
+.check-anel { stroke: var(--acento); }
+.check-traco { stroke: var(--hero-tinta); stroke-dasharray: 40; stroke-dashoffset: 0; animation: tracar .9s .25s ease-out both; }
+@keyframes tracar { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+
+/* ---------- Lei ---------- */
+.ata { border-top: 2px solid var(--marca); }
+.ata-linha { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 16px; align-items: baseline; padding-block: 20px; border-bottom: 1px solid var(--linha); }
+.ata-num { font-family: var(--f-display); font-weight: 700; font-size: 30px; color: var(--acento-texto); font-variant-numeric: tabular-nums; }
+.ata-txt { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.4; }
+.lei-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.nota-lateral { background: var(--papel-2); padding: 28px; display: grid; gap: 12px; }
+.nota-lateral h3 { font-size: 22px; color: var(--marca); }
+.nota-lateral p { color: var(--tinta-2); }
+
+/* ---------- Faixa 6 meses ---------- */
+.seis { background: var(--faixa); color: var(--faixa-tinta); }
+.seis-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); align-items: center; }
+.seis-num { font-family: var(--f-display); font-weight: 700; font-size: clamp(150px, 26vw, 300px); line-height: .8; letter-spacing: -.04em; }
+.seis-num small { display: block; font-size: .16em; letter-spacing: .02em; margin-top: .3em; font-weight: 600; }
+.seis .rotulo { color: var(--faixa-tinta); }
+.seis h2 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.1; margin-top: 12px; }
+.seis p.lead { color: var(--faixa-tinta); margin-top: 18px; }
+
+/* ---------- Destinação direta ---------- */
+.passos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; counter-reset: p; }
+.passo { padding: 28px 28px 28px 0; border-top: 3px solid var(--marca); display: grid; gap: 10px; align-content: start; position: relative; }
+.passo + .passo { padding-left: 28px; border-left: 1px solid var(--linha); }
+.passo .n { font-family: var(--f-display); font-size: 40px; font-weight: 700; color: var(--acento-texto); line-height: 1; }
+.passo h3 { font-size: 22px; color: var(--marca); line-height: 1.2; }
+.passo p { color: var(--tinta-2); }
+.obs { margin-top: 28px; font-size: 15px; color: var(--tinta-2); max-width: 70ch; }
+
+/* ---------- Simulador ---------- */
+.sim { background: var(--papel-2); }
+.sim-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.cartao { background: var(--papel); border: 1px solid var(--linha); padding: clamp(22px, 3.4vw, 36px); display: grid; gap: 16px; }
+.etq { justify-self: start; font-family: var(--f-rotulo); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-2); background: var(--areia); padding: 6px 10px; }
+.cartao h3 { font-size: clamp(24px, 3vw, 30px); color: var(--marca); line-height: 1.15; }
+.cartao .ent { color: var(--tinta-2); font-size: 15px; }
+.barra { height: 16px; background: var(--barra-fundo); display: flex; overflow: hidden; }
+.barra .b-base { background: var(--acento); }
+.barra .b-sim { background: var(--sim); background-image: repeating-linear-gradient(135deg, transparent 0 6px, rgba(16,38,45,.18) 6px 9px); transition: width .25s ease; }
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.nums div { display: grid; gap: 2px; min-width: 0; }
+.nums b { font-family: var(--f-display); font-size: clamp(22px, 3vw, 30px); color: var(--marca); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.nums span { font-size: 13.5px; color: var(--tinta-2); }
+.controle { display: grid; gap: 10px; padding-top: 6px; border-top: 1px solid var(--linha); }
+.controle label { font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; gap: 12px; }
+.controle label output { font-family: var(--f-display); font-size: 20px; color: var(--acento-texto); font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: var(--acento); height: 28px; }
+.frase { font-family: var(--f-display); font-size: clamp(19px, 2.2vw, 22px); color: var(--marca); line-height: 1.35; }
+.frase em { font-style: normal; color: var(--acento-texto); }
+.nota-fundo { font-size: 14px; color: var(--tinta-2); background: var(--areia); padding: 12px 14px; }
+.sim-lista { display: grid; gap: 18px; margin-top: 28px; }
+.sim-lista div { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; }
+.sim-lista svg { width: 22px; height: 22px; margin-top: 3px; }
+
+/* ---------- Fluxo ---------- */
+.fluxo { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+.etapa { display: grid; gap: 12px; align-content: start; padding-right: 20px; }
+.no { display: flex; align-items: center; gap: 0; }
+.no b { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-size: 19px; background: var(--hero); color: var(--hero-tinta); flex: none; }
+.no::after { content: ""; height: 2px; flex: 1; background: var(--linha); }
+.etapa:last-child .no::after { background: transparent; }
+.etapa h3 { font-size: 21px; color: var(--marca); line-height: 1.2; }
+.etapa p { color: var(--tinta-2); font-size: 15.5px; }
+
+/* ---------- Abas ---------- */
+.abas { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--linha); }
+.aba { font: 600 16px/1 var(--f-texto); padding: 16px 20px; background: none; border: 0; border-bottom: 3px solid transparent; color: var(--tinta-2); cursor: pointer; margin-bottom: -1px; }
+.aba[aria-selected="true"] { color: var(--marca); border-bottom-color: var(--acento); }
+.painel { padding-top: 32px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(24px, 5vw, 64px); }
+.painel h3 { font-size: clamp(24px, 3vw, 32px); color: var(--marca); line-height: 1.15; }
+.painel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.painel li { padding-block: 14px; border-bottom: 1px solid var(--linha); display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 17.5px; }
+.painel li::before { content: ""; width: 8px; height: 8px; background: var(--acento); margin-top: 9px; }
+
+/* ---------- Segurança ---------- */
+.seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--linha); }
+.seg div { padding: 28px 24px 28px 0; border-bottom: 1px solid var(--linha); display: grid; gap: 8px; align-content: start; }
+.seg h3 { font-size: 21px; color: var(--marca); }
+.seg p { color: var(--tinta-2); font-size: 15.5px; }
+
+/* ---------- Cronograma ---------- */
+.crono { background: var(--papel-2); }
+.semanas { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 3px; }
+.semanas .s { font-family: var(--f-rotulo); font-size: 11px; color: var(--tinta-2); text-align: center; padding-bottom: 6px; font-variant-numeric: tabular-nums; }
+.fase { height: 44px; background: var(--marca); color: var(--papel); display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 18px; }
+:root .fase { background: var(--btn-bg); color: var(--btn-tinta); }
+:root .fase.final { background: var(--sim); color: var(--faixa-tinta); }
+.legenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 32px; margin-top: 28px; }
+.legenda div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.legenda b { font-family: var(--f-display); font-size: 20px; color: var(--acento-texto); }
+.legenda span { font-size: 15.5px; }
+.legenda small { display: block; font-family: var(--f-rotulo); font-size: 11.5px; color: var(--tinta-2); letter-spacing: .06em; }
+
+/* ---------- Contratação ---------- */
+.contr { background: var(--hero); color: var(--hero-tinta); }
+.contr .rotulo { color: var(--hero-rotulo); }
+.contr .titulo { color: var(--hero-tinta); }
+.contr .cabeca .fio { background: var(--acento); }
+.tres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.tres div { background: var(--hero-2); padding: 28px; border-top: 3px solid var(--acento); display: grid; gap: 10px; align-content: start; }
+.tres h3 { font-size: 22px; color: var(--hero-tinta); }
+.tres p { color: var(--hero-tinta-2); font-size: 15.5px; }
+.contr .lead { color: var(--hero-tinta-2); margin-top: 28px; }
+
+/* ---------- Módulos adicionais ---------- */
+.mods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 3px solid var(--marca); }
+.mods div { padding: 28px 24px 28px 0; display: grid; gap: 10px; align-content: start; }
+.mods div + div { padding-left: 24px; border-left: 1px solid var(--linha); }
+.mods .l { font-family: var(--f-display); font-size: 40px; font-weight: 700; color: var(--acento-texto); line-height: 1; }
+.mods h3 { font-size: 22px; color: var(--marca); }
+.mods p { color: var(--tinta-2); font-size: 15.5px; }
+
+/* ---------- Quem somos ---------- */
+.quem-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.quem-grid .lead + .lead { margin-top: 16px; }
+.pessoa { background: var(--papel-2); padding: 32px; display: grid; gap: 6px; border-top: 3px solid var(--acento); }
+.pessoa h3 { font-size: 24px; color: var(--marca); }
+.pessoa p { color: var(--tinta-2); }
+
+/* ---------- Final ---------- */
+.final { background: var(--hero); color: var(--hero-tinta); }
+.final .rotulo { color: var(--hero-rotulo); }
+.final .titulo { color: var(--hero-tinta); max-width: 25ch; }
+.final .cabeca .fio { background: var(--acento); }
+.prox { border-top: 1px solid var(--hero-linha); }
+.prox div { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: baseline; padding-block: 20px; border-bottom: 1px solid var(--hero-linha); }
+.prox b { font-family: var(--f-display); font-size: 34px; color: var(--acento); }
+.prox span { font-size: clamp(18px, 2.2vw, 22px); }
+.contato { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; margin-top: 44px; }
+.contato .nome { font-family: var(--f-display); font-size: 24px; font-weight: 700; }
+.contato .dados { color: var(--hero-tinta-2); font-variant-numeric: tabular-nums; margin-top: 6px; user-select: all; }
+.contato .acoes { margin-top: 0; }
+.aviso-copia { font-size: 14px; color: var(--hero-rotulo); min-height: 20px; margin-top: 8px; }
+footer { background: var(--hero-2); color: var(--hero-tinta-2); font-size: 13.5px; padding-block: 24px; }
+footer .faixa-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+/* ---------- Aviso ao vivo na capa ---------- */
+.trilho i { transition: width .8s cubic-bezier(.2,.7,.2,1); }
+.aviso-vivo { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; margin-top: 14px; padding: 10px 12px; background: var(--hero); border: 1px solid var(--hero-linha); font-size: 13.5px; color: var(--hero-tinta-2); }
+.aviso-vivo b { color: var(--hero-tinta); font-variant-numeric: tabular-nums; }
+.aviso-vivo .agora { font-family: var(--f-rotulo); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--hero-rotulo); }
+.aviso-vivo .ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--acento); box-shadow: 0 0 0 0 var(--acento); animation: pulso 1.8s infinite; }
+.aviso-vivo.troca { animation: entra .5s ease-out; }
+@keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(224,138,44,.6); } 70% { box-shadow: 0 0 0 8px rgba(224,138,44,0); } 100% { box-shadow: 0 0 0 0 rgba(224,138,44,0); } }
+@keyframes entra { from { transform: translateY(6px); opacity: .4; } to { transform: none; opacity: 1; } }
+.proj.sobe .proj-pct { color: var(--acento); }
+
+/* ---------- Relatório semestral ---------- */
+.rel-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.checks { list-style: none; margin: 28px 0 32px; padding: 0; display: grid; gap: 12px; }
+.checks li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: center; font-size: 17.5px; color: var(--tinta-2); transition: color .3s; }
+.checks .caixa { width: 28px; height: 28px; border: 2px solid var(--linha); display: grid; place-items: center; transition: background .3s, border-color .3s; }
+.checks .caixa svg { width: 18px; height: 18px; fill: none; stroke: var(--btn-tinta); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .2s; }
+.checks li.ok { color: var(--tinta); }
+.checks li.ok .caixa { background: var(--btn-bg); border-color: var(--btn-bg); }
+.checks li.ok .caixa svg { opacity: 1; }
+.doc { background: var(--papel); border: 1px solid var(--linha); box-shadow: 0 24px 48px -28px rgba(16,38,45,.45); padding: clamp(22px, 3.4vw, 36px); display: grid; gap: 18px; transition: opacity .4s, transform .4s; }
+.doc.gerando { opacity: .25; transform: translateY(8px); }
+.doc-cab { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--marca); }
+.doc-cab svg { width: 40px; height: 40px; }
+.doc-tit { font-family: var(--f-display); font-weight: 700; font-size: 22px; color: var(--marca); line-height: 1.15; }
+.doc-sub { font-size: 14px; color: var(--tinta-2); }
+.doc-linhas { margin: 0; display: grid; }
+.doc-linhas div { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-bottom: 1px solid var(--linha); }
+.doc-linhas dt { color: var(--tinta-2); font-size: 15.5px; }
+.doc-linhas dd { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: 19px; color: var(--marca); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rel-grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; }
+.doc { gap: 0; }
+.doc-cab { margin-bottom: 12px; }
+.doc-base { font-size: 13px; color: var(--tinta-2); padding-bottom: 8px; }
+.sec { border-bottom: 1px solid var(--linha); }
+.sec summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 30px minmax(0, 1fr) auto 18px; gap: 10px; align-items: center; padding-block: 14px; }
+.sec summary::-webkit-details-marker { display: none; }
+.sec summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid var(--tinta-2); border-bottom: 2px solid var(--tinta-2); transform: rotate(45deg) translateY(-3px); justify-self: center; transition: transform .2s; }
+.sec[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.sec-n { width: 30px; height: 30px; display: grid; place-items: center; background: var(--btn-bg); color: var(--btn-tinta); font-family: var(--f-display); font-weight: 700; font-size: 15px; }
+.sec-t { font-family: var(--f-display); font-weight: 700; font-size: 17.5px; color: var(--marca); line-height: 1.2; min-width: 0; }
+.inc { font-family: var(--f-rotulo); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--acento-texto); white-space: nowrap; }
+.sec-corpo { padding: 0 0 18px 40px; display: grid; gap: 14px; }
+.mini { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--linha); }
+.mini div { padding: 12px 14px; display: grid; gap: 2px; align-content: start; min-width: 0; }
+.mini div + div { border-left: 1px solid var(--linha); }
+.mini b { font-family: var(--f-display); font-size: 22px; color: var(--marca); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.mini span { font-size: 12.5px; color: var(--tinta-2); line-height: 1.3; }
+.sec-nota { font-size: 13.5px; color: var(--tinta-2); }
+.tab-wrap { overflow-x: auto; }
+.tab { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.tab th { text-align: left; font-weight: 600; font-size: 12.5px; color: var(--btn-tinta); background: var(--btn-bg); padding: 8px 10px; white-space: nowrap; }
+.tab td { padding: 8px 10px; border-bottom: 1px solid var(--linha); }
+.tab tbody tr:nth-child(even) td { background: var(--papel-2); }
+.tab th:last-child, .tab td:last-child, .tab.valores th:not(:first-child), .tab.valores td:not(:first-child) { text-align: right; }
+.tab td:not(:first-child) { white-space: nowrap; }
+.tab tfoot td { font-weight: 700; color: var(--marca); border-top: 2px solid var(--marca); border-bottom: 0; }
+.doc-linhas .tot dt, .doc-linhas .tot dd { font-weight: 700; color: var(--marca); }
+.doc-linhas .tot { border-bottom: 2px solid var(--marca); }
+.chip { display: inline-block; font-family: var(--f-rotulo); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; background: var(--areia); color: var(--tinta); white-space: nowrap; }
+.chip.alerta { background: var(--acento); color: var(--faixa-tinta); }
+.sec-nota .chip { margin-left: 6px; }
+.pend { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14.5px; }
+.pend li { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.pend .chip { justify-self: start; }
+.doc-rod { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; font-size: 13px; color: var(--tinta-2); padding-top: 14px; }
+.formatos { font-family: var(--f-rotulo); font-size: 11px; letter-spacing: .1em; color: var(--acento-texto); }
+@media (max-width: 560px) {
+  .sec summary { grid-template-columns: 30px minmax(0, 1fr) 18px; }
+  .inc { grid-column: 2; grid-row: 2; }
+  .sec summary::after { grid-column: 3; grid-row: 1; }
+  .sec-corpo { padding-left: 0; }
+  .mini { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mini div + div { border-left: 0; }
+  .mini div:nth-child(even) { border-left: 1px solid var(--linha); }
+  .mini div:nth-child(n+3) { border-top: 1px solid var(--linha); }
+  .pend li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+
+/* ---------- Painel do conselho ---------- */
+.painel-sec { background: var(--papel-2); }
+.janela { background: var(--papel); border: 1px solid var(--linha); box-shadow: 0 30px 60px -36px rgba(16,38,45,.5); overflow: hidden; }
+.janela-barra { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--hero); color: var(--hero-tinta-2); flex-wrap: wrap; }
+.bolinhas { display: flex; gap: 6px; }
+.bolinhas i { width: 10px; height: 10px; border-radius: 50%; background: var(--hero-linha); display: block; }
+.janela-tit { font-family: var(--f-rotulo); font-size: 12px; letter-spacing: .08em; flex: 1; min-width: 0; }
+.filtro { display: flex; border: 1px solid var(--hero-linha); }
+.filtro button { font: 600 13.5px/1 var(--f-texto); padding: 9px 14px; background: transparent; color: var(--hero-tinta-2); border: 0; cursor: pointer; }
+.filtro button[aria-pressed="true"] { background: var(--acento); color: var(--faixa-tinta); }
+.janela-corpo { padding: clamp(18px, 3vw, 32px); display: grid; gap: clamp(20px, 3vw, 32px); }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--linha); }
+.kpis div { padding: 18px 20px; display: grid; gap: 6px; min-width: 0; }
+.kpis div + div { border-left: 1px solid var(--linha); }
+.kpis span { font-size: 13.5px; color: var(--tinta-2); }
+.kpis b { font-family: var(--f-display); font-size: clamp(26px, 3.4vw, 38px); color: var(--marca); font-variant-numeric: tabular-nums; line-height: 1.05; }
+.dash { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 40px); }
+.graf { margin: 0; display: grid; gap: 10px; min-width: 0; }
+.graf figcaption, .sit-tit { font-weight: 600; font-size: 15px; color: var(--tinta); }
+.graf svg { width: 100%; height: auto; display: block; }
+.graf .eixo { stroke: var(--linha); stroke-width: 1; }
+.graf .bar { fill: var(--btn-bg); transition: y .5s ease, height .5s ease; }
+.graf .bar.pico { fill: var(--acento); }
+.graf .rot { fill: var(--tinta-2); font-family: var(--f-texto); font-size: 14px; }
+.graf .val { fill: var(--tinta); font-family: var(--f-texto); font-size: 13.5px; font-weight: 600; }
+.graf-nota { font-size: 13.5px; color: var(--tinta-2); }
+.sit { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sit-linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 14.5px; }
+.sit-linha .tr { grid-column: 1 / -1; height: 10px; background: var(--barra-fundo); }
+.sit-linha .tr i { display: block; height: 100%; background: var(--btn-bg); transition: width .5s ease; }
+.sit-linha.destaque .tr i { background: var(--acento); }
+.sit-linha b { font-variant-numeric: tabular-nums; color: var(--marca); }
+
+@media (max-width: 860px) {
+  .rel-grid, .dash { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpis div + div { border-left: 0; }
+  .kpis div:nth-child(even) { border-left: 1px solid var(--linha); }
+  .kpis div:nth-child(n+3) { border-top: 1px solid var(--linha); }
+  .janela-tit { flex-basis: 100%; order: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aviso-vivo .ponto, .aviso-vivo.troca { animation: none; }
+  .trilho i, .doc, .graf .bar, .sit-linha .tr i, .checks li, .checks .caixa { transition: none; }
+}
+
+/* ---------- Telas estreitas ---------- */
+@media (max-width: 860px) {
+  .capa-grid, .lei-grid, .sim-grid, .quem-grid, .painel { grid-template-columns: minmax(0, 1fr); }
+  .passos, .mods { grid-template-columns: minmax(0, 1fr); }
+  .passo, .passo + .passo, .mods div, .mods div + div { padding: 24px 0; border-left: 0; }
+  .passo + .passo { border-top: 1px solid var(--linha); }
+  .mods div + div { border-top: 1px solid var(--linha); }
+  .fluxo { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .etapa { grid-template-columns: 46px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; padding: 0 0 24px; position: relative; }
+  .etapa .no { grid-row: span 2; align-self: start; flex-direction: column; height: 100%; }
+  .etapa .no::after { width: 2px; height: auto; min-height: 24px; }
+  .seg, .tres { grid-template-columns: minmax(0, 1fr); }
+  .seg div { padding-right: 0; }
+  .seis-grid { grid-template-columns: minmax(0, 1fr); }
+  .contato { grid-template-columns: minmax(0, 1fr); }
+  .semanas .s:nth-child(even) { visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trilho i, .check-traco { animation: none; }
+  .barra .b-sim { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="capa" aria-labelledby="t-capa">
+  <div class="faixa-inner">
+    <div class="capa-topo">
+      <div class="marca" aria-label="Delibera">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke-width="4.4" class="check-anel"/><path d="M15 25l6 6 12-13" fill="none" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--hero-tinta)"/></svg>
+        Delibera
+      </div>
+      <p class="para" id="para" hidden></p>
+    </div>
+    <div class="capa-grid">
+      <div>
+        <p class="rotulo eyebrow">Para conselhos municipais de direitos</p>
+        <h1 id="t-capa">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke-width="4.4" class="check-anel"/><path class="check-traco" d="M15 25l6 6 12-13" fill="none" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Delibera
+        </h1>
+        <p class="sub">Destinação direta e transparência para o CMDCA e o CMI, do edital à prestação de contas.</p>
+        <div class="acoes">
+          <a class="btn btn-acento" href="#painel">Ver o painel do conselho</a>
+          <a class="btn btn-linha" href="#contato">Falar com a gente</a>
+        </div>
+      </div>
+      <div class="livro" aria-label="Exemplo de quadro de projetos chancelados">
+        <div class="livro-cab"><span>Projetos chancelados</span><span>Exemplo ilustrativo</span></div>
+        <div class="proj" data-capt="74400" data-meta="120000" data-fundo="Fundo da Criança e do Adolescente">
+          <div class="proj-top"><span class="proj-nome">Música na Comunidade</span><span class="proj-pct">62%</span></div>
+          <div class="trilho"><i style="width:62%"></i></div>
+          <span class="proj-meta">R$ 74.400 de R$ 120.000 · Fundo da Criança e do Adolescente</span>
+        </div>
+        <div class="proj" data-capt="34200" data-meta="90000" data-fundo="Fundo da Criança e do Adolescente">
+          <div class="proj-top"><span class="proj-nome">Esporte no Contraturno</span><span class="proj-pct">38%</span></div>
+          <div class="trilho"><i style="width:38%"></i></div>
+          <span class="proj-meta">R$ 34.200 de R$ 90.000 · Fundo da Criança e do Adolescente</span>
+        </div>
+        <div class="proj" data-capt="48600" data-meta="60000" data-fundo="Fundo da Pessoa Idosa">
+          <div class="proj-top"><span class="proj-nome">Convivência Ativa 60+</span><span class="proj-pct">81%</span></div>
+          <div class="trilho"><i style="width:81%"></i></div>
+          <span class="proj-meta">R$ 48.600 de R$ 60.000 · Fundo da Pessoa Idosa</span>
+        </div>
+        <div class="aviso-vivo" id="aviso-vivo" role="status" aria-live="off">
+          <span class="ponto" aria-hidden="true"></span>
+          <span id="av-txt"><b>Projeto chancelado</b> · Música na Comunidade</span>
+          <span class="agora">agora</span>
+        </div>
+        <p class="livro-rodape">Cada projeto chancelado fica público, com meta, valor captado pela instituição proponente e saldo.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section aria-labelledby="t-lei">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Base legal · ECA, art. 260-I</p>
+        <h2 class="titulo" id="t-lei">O conselho é obrigado a prestar contas à sociedade</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="lei-grid">
+        <div>
+          <p class="lead" style="margin-bottom:20px">Os Conselhos dos Direitos da Criança e do Adolescente devem divulgar amplamente, entre outras informações:</p>
+          <div class="ata">
+            <div class="ata-linha"><span class="ata-num">01</span><span class="ata-txt">os requisitos para apresentar projetos ao fundo</span></div>
+            <div class="ata-linha"><span class="ata-num">02</span><span class="ata-txt">a relação dos projetos aprovados em cada ano e o valor previsto para cada um</span></div>
+            <div class="ata-linha"><span class="ata-num">03</span><span class="ata-txt">o total de recursos recebidos e a destinação, projeto a projeto</span></div>
+            <div class="ata-linha"><span class="ata-num">04</span><span class="ata-txt">a avaliação dos resultados dos projetos</span></div>
+          </div>
+        </div>
+        <aside class="nota-lateral">
+          <h3>O que muda na prática</h3>
+          <p>Publicar uma resolução com a lista de projetos não basta. A sociedade precisa ver o que foi aprovado, quanto cada projeto já captou e para onde foi o recurso.</p>
+          <p>O Delibera organiza essas informações desde a inscrição do projeto e as publica automaticamente.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="seis" aria-labelledby="t-seis">
+    <div class="faixa-inner seis-grid">
+      <p class="seis-num" aria-hidden="true">6<small>meses</small></p>
+      <div>
+        <p class="rotulo">Lei 15.426/2026</p>
+        <h2 id="t-seis">O relatório de atividades do conselho agora é semestral e obrigatório</h2>
+        <p class="lead">Projetos aprovados, recursos recebidos, destinação por projeto e avaliação dos resultados, apresentados e divulgados no mínimo a cada seis meses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rel" aria-labelledby="t-rel">
+    <div class="faixa-inner rel-grid">
+      <div>
+        <div class="cabeca">
+          <p class="rotulo">Relatório semestral</p>
+          <h2 class="titulo" id="t-rel">O relatório que a lei pede, gerado com um&#160;clique</h2>
+          <span class="fio"></span>
+        </div>
+        <p class="lead">O Delibera reúne o que o conselho e as instituições proponentes já registram na plataforma e monta o relatório com as informações exigidas pelo art. 260-I do ECA. Toque em cada parte do exemplo para abrir.</p>
+        <ul class="checks" id="checks">
+          <li class="ok"><span class="caixa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Atividades e reuniões do conselho</li>
+          <li class="ok"><span class="caixa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Projetos aprovados e valores previstos</li>
+          <li class="ok"><span class="caixa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Recursos recebidos e destinação por projeto</li>
+          <li class="ok"><span class="caixa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Avaliação dos resultados</li>
+          <li class="ok"><span class="caixa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Pendências das proponentes</li>
+        </ul>
+        <button class="btn btn-escuro" type="button" id="gerar">Gerar o relatório de exemplo</button>
+      </div>
+      <article class="doc" id="doc" aria-label="Exemplo de relatório semestral">
+        <div class="doc-cab">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke-width="4.4" class="check-anel"/><path d="M15 25l6 6 12-13" fill="none" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--marca)"/></svg>
+          <div><p class="doc-tit">Relatório de atividades</p><p class="doc-sub">CMDCA de <span class="mun">seu município</span> · 1º semestre de 2026 (janeiro a junho)</p></div>
+          <span class="etq">Exemplo</span>
+        </div>
+        <p class="doc-base">Elaborado nos termos do art. 260-I, parágrafo único, do ECA, incluído pela Lei 15.426/2026.</p>
+
+        <details class="sec" open>
+          <summary><span class="sec-n">1</span><span class="sec-t">Atividades do conselho</span><span class="inc">Art. 260-I, I a III</span></summary>
+          <div class="sec-corpo">
+            <div class="mini">
+              <div><b>6</b><span>reuniões ordinárias</span></div>
+              <div><b>2</b><span>reuniões extraordinárias</span></div>
+              <div><b>11</b><span>resoluções publicadas</span></div>
+              <div><b>87%</b><span>frequência dos conselheiros</span></div>
+            </div>
+            <p class="sec-nota">Calendário de reuniões, ações prioritárias e requisitos para apresentação de projetos publicados no portal do conselho.</p>
+          </div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="sec-n">2</span><span class="sec-t">Projetos aprovados e valores previstos</span><span class="inc">Art. 260-I, IV</span></summary>
+          <div class="sec-corpo">
+            <div class="tab-wrap"><table class="tab">
+              <thead><tr><th>Projeto</th><th>Proponente</th><th>Valor aprovado</th></tr></thead>
+              <tbody>
+                <tr><td>Música na Comunidade</td><td>OSC A</td><td>R$ 120.000</td></tr>
+                <tr><td>Esporte no Contraturno</td><td>CRAS Norte</td><td>R$ 90.000</td></tr>
+                <tr><td>Leitura em Rede</td><td>OSC B</td><td>R$ 75.000</td></tr>
+                <tr><td>Oficina de Robótica</td><td>OSC C</td><td>R$ 68.000</td></tr>
+                <tr><td>Outros 10 projetos</td><td>8 proponentes</td><td>R$ 831.000</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="2">14 projetos chancelados</td><td>R$ 1.184.000</td></tr></tfoot>
+            </table></div>
+          </div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="sec-n">3</span><span class="sec-t">Recursos recebidos e destinação</span><span class="inc">Art. 260-I, V</span></summary>
+          <div class="sec-corpo">
+            <dl class="doc-linhas">
+              <div><dt>Doações com indicação de projeto</dt><dd>R$ 268.400</dd></div>
+              <div><dt>Doações sem indicação</dt><dd>R$ 52.300</dd></div>
+              <div><dt>Rendimentos da conta do fundo</dt><dd>R$ 21.400</dd></div>
+              <div class="tot"><dt>Total recebido pelo fundo</dt><dd>R$ 342.100</dd></div>
+            </dl>
+            <div class="tab-wrap"><table class="tab valores">
+              <thead><tr><th>Projeto</th><th>Indicado</th><th>Repassado</th></tr></thead>
+              <tbody>
+                <tr><td>Música na Comunidade</td><td>R$ 74.400</td><td>R$ 59.520</td></tr>
+                <tr><td>Esporte no Contraturno</td><td>R$ 34.200</td><td>R$ 27.360</td></tr>
+                <tr><td>Leitura em Rede</td><td>R$ 28.900</td><td>R$ 23.120</td></tr>
+                <tr><td>Oficina de Robótica</td><td>R$ 26.500</td><td>R$ 21.200</td></tr>
+                <tr><td>Outros 7 projetos</td><td>R$ 104.400</td><td>R$ 83.520</td></tr>
+              </tbody>
+              <tfoot><tr><td>11 projetos com captação</td><td>R$ 268.400</td><td>R$ 214.720</td></tr></tfoot>
+            </table></div>
+            <p class="sec-nota">Retenção ao fundo de 20% sobre cada captação chancelada (R$ 53.680), conforme resolução do conselho. <span class="chip">Destinação registrada no SIPIA</span></p>
+          </div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="sec-n">4</span><span class="sec-t">Avaliação dos resultados</span><span class="inc">Art. 260-I, VI</span></summary>
+          <div class="sec-corpo">
+            <div class="mini">
+              <div><b>9 de 14</b><span>relatórios de resultado recebidos</span></div>
+              <div><b>6</b><span>projetos com metas atingidas</span></div>
+              <div><b>3</b><span>com metas parcialmente atingidas</span></div>
+              <div><b>1.240</b><span>crianças e adolescentes atendidos</span></div>
+            </div>
+            <p class="sec-nota">7 visitas de monitoramento realizadas pela comissão de acompanhamento.</p>
+          </div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="sec-n">5</span><span class="sec-t">Pendências</span><span class="inc">Para o próximo semestre</span></summary>
+          <div class="sec-corpo">
+            <ul class="pend">
+              <li><span class="chip alerta">Pendente</span>5 relatórios de resultado ainda não entregues pelas proponentes</li>
+              <li><span class="chip">Em análise</span>2 prestações de contas parciais na comissão de finanças</li>
+              <li><span class="chip">Em análise</span>3 projetos aguardando complementação de documentos</li>
+            </ul>
+          </div>
+        </details>
+
+        <div class="doc-rod">
+          <span>Aprovado na plenária de 14/07/2026 · publicado no portal em 16/07/2026</span>
+          <span class="formatos">PDF · Excel · CSV</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="painel-sec" id="painel" aria-labelledby="t-painel">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Painel do conselho</p>
+        <h2 class="titulo" id="t-painel">Os números do fundo, atualizados sem&#160;planilha</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="janela">
+        <div class="janela-barra">
+          <span class="bolinhas" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="janela-tit">Painel do conselho · exemplo ilustrativo</span>
+          <div class="filtro" role="group" aria-label="Filtrar por conselho">
+            <button type="button" id="f-todos" data-f="todos" aria-pressed="true">Todos</button>
+            <button type="button" id="f-cmdca" data-f="cmdca" aria-pressed="false">CMDCA</button>
+            <button type="button" id="f-cmi" data-f="cmi" aria-pressed="false">CMI</button>
+          </div>
+        </div>
+        <div class="janela-corpo">
+          <div class="kpis">
+            <div><span>Instituições cadastradas</span><b id="k-ent">31</b></div>
+            <div><span>Projetos chancelados</span><b id="k-proj">23</b></div>
+            <div><span>Captado no semestre</span><b id="k-capt">R$ 486 mil</b></div>
+            <div><span>Média da meta atingida</span><b id="k-media">58%</b></div>
+          </div>
+          <div class="dash">
+            <figure class="graf">
+              <figcaption>Captação por mês, 1º semestre de 2026</figcaption>
+              <svg id="grafico" viewBox="0 0 560 250" role="img" aria-label="Captação mensal de janeiro a junho"></svg>
+              <p class="graf-nota">Maio concentra as doações feitas na declaração do Imposto de Renda.</p>
+            </figure>
+            <div class="sit">
+              <p class="sit-tit">Projetos por situação</p>
+              <div id="situacoes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-dest">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Destinação direta · Lei 14.692/2023</p>
+        <h2 class="titulo" id="t-dest">O doador pode escolher o projeto que vai apoiar</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="passos">
+        <div class="passo"><span class="n">1</span><h3>O conselho chancela os projetos</h3><p>Aprova os projetos das instituições proponentes e autoriza cada uma a captar recursos pelo fundo.</p></div>
+        <div class="passo"><span class="n">2</span><h3>O contribuinte doa e indica o projeto</h3><p>A doação é depositada na conta do fundo municipal, com dedução no Imposto de Renda, e é destinada ao projeto indicado.</p></div>
+        <div class="passo"><span class="n">3</span><h3>O conselho publica e acompanha</h3><p>Cada projeto chancelado fica visível, com o valor captado sempre atualizado.</p></div>
+      </div>
+      <p class="obs">A captação é feita pela instituição proponente, seja uma OSC ou um órgão público, como prevê a Lei 14.692/2023. No fundo da pessoa idosa, a indicação do projeto pelo doador segue a regulamentação de cada município.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-fluxo">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Como funciona</p>
+        <h2 class="titulo" id="t-fluxo">Do edital à prestação de contas, em&#160;um&#160;só&#160;lugar</h2>
+        <span class="fio"></span>
+      </div>
+      <ol class="fluxo" style="list-style:none;margin:0;padding:0">
+        <li class="etapa"><div class="no"><b>1</b></div><h3>Inscrição</h3><p>OSCs e órgãos públicos se cadastram e enviam projetos por formulário guiado.</p></li>
+        <li class="etapa"><div class="no"><b>2</b></div><h3>Análise</h3><p>Conselheiros avaliam, pedem complementação e aprovam.</p></li>
+        <li class="etapa"><div class="no"><b>3</b></div><h3>Chancela</h3><p>O projeto aprovado recebe a autorização de captação.</p></li>
+        <li class="etapa"><div class="no"><b>4</b></div><h3>Captação</h3><p>A página pública mostra meta, valor captado e saldo.</p></li>
+        <li class="etapa"><div class="no"><b>5</b></div><h3>Prestação de contas</h3><p>Relatórios e painel reúnem o que a lei manda divulgar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-abas">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Funcionalidades</p>
+        <h2 class="titulo" id="t-abas">Uma área para cada pessoa do processo</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="abas" role="tablist" aria-label="Quem usa o Delibera">
+        <button class="aba" role="tab" id="tab-ent" aria-controls="p-ent" aria-selected="true">Proponentes</button>
+        <button class="aba" role="tab" id="tab-cons" aria-controls="p-cons" aria-selected="false" tabindex="-1">Conselheiros</button>
+        <button class="aba" role="tab" id="tab-doa" aria-controls="p-doa" aria-selected="false" tabindex="-1">Sociedade</button>
+        <button class="aba" role="tab" id="tab-ges" aria-controls="p-ges" aria-selected="false" tabindex="-1">Gestão</button>
+      </div>
+      <div class="painel" role="tabpanel" id="p-ent" aria-labelledby="tab-ent">
+        <h3>Inscrever projetos sem papel e acompanhar cada etapa</h3>
+        <ul><li>Autocadastro da instituição e envio de documentos</li><li>Projeto em formulário guiado, com salvamento parcial e edição</li><li>Situação da análise sempre visível</li><li>Atualização do valor captado pela própria instituição</li></ul>
+      </div>
+      <div class="painel" role="tabpanel" id="p-cons" aria-labelledby="tab-cons" hidden>
+        <h3>Analisar e aprovar com histórico de cada decisão</h3>
+        <ul><li>Análise, aprovação ou reprovação dos projetos</li><li>Pedido de complementação à proponente</li><li>Emissão da autorização de captação</li><li>Cada conselheiro vê só os projetos do próprio conselho</li></ul>
+      </div>
+      <div class="painel" role="tabpanel" id="p-doa" aria-labelledby="tab-doa" hidden>
+        <h3>Acompanhar os projetos e saber para onde vai o recurso</h3>
+        <ul><li>Página pública de cada projeto chancelado</li><li>Meta, valor captado, percentual e saldo</li><li>Manifestação de interesse em apoiar, com aceite da LGPD</li></ul>
+      </div>
+      <div class="painel" role="tabpanel" id="p-ges" aria-labelledby="tab-ges" hidden>
+        <h3>Indicadores e relatórios prontos para a prestação de contas</h3>
+        <ul><li>Painel com instituições, projetos por situação e total captado</li><li>Relatórios em PDF, Excel e CSV, por conselho ou consolidados</li><li>Histórico de alterações com data e responsável</li><li>Integração visual ao site da Prefeitura</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sim" id="simulador" aria-labelledby="t-sim">
+    <div class="faixa-inner sim-grid">
+      <div>
+        <div class="cabeca" style="margin-bottom:0">
+          <p class="rotulo">Transparência</p>
+          <h2 class="titulo" id="t-sim">Veja como a sociedade acompanha um projeto</h2>
+          <span class="fio"></span>
+        </div>
+        <div class="sim-lista">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="var(--acento-texto)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Descrição, objetivos, público e cronograma, publicados assim que o conselho aprova.</p></div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="var(--acento-texto)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Meta, valor captado, percentual e saldo, com a data da última atualização.</p></div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="var(--acento-texto)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Manifestação de interesse em apoiar o projeto, registrada para o conselho e a proponente, com aceite da LGPD.</p></div>
+        </div>
+      </div>
+      <div class="cartao">
+        <span class="etq">Exemplo ilustrativo · arraste para simular</span>
+        <h3>Música na Comunidade</h3>
+        <p class="ent">Instituição proponente · Fundo da Criança e do Adolescente</p>
+        <div class="barra" role="img" id="barra" aria-label="Progresso da captação">
+          <span class="b-base" id="b-base" style="width:62%"></span>
+          <span class="b-sim" id="b-sim" style="width:4.2%"></span>
+        </div>
+        <div class="nums">
+          <div><b id="n-capt">R$ 79.400</b><span>captados</span></div>
+          <div><b id="n-pct">66%</b><span>da meta</span></div>
+          <div><b id="n-saldo">R$ 40.600</b><span>faltam</span></div>
+        </div>
+        <div class="controle">
+          <label for="valor-doacao">Simular nova captação <output id="o-valor" for="valor-doacao">R$ 5.000</output></label>
+          <input type="range" id="valor-doacao" min="0" max="30000" step="500" value="5000">
+          <p class="frase" id="frase">Com mais <em>R$ 5.000</em> captados pela proponente, o projeto chega a <em>66%</em> da meta.</p>
+        </div>
+        <p class="nota-fundo">As doações são feitas diretamente na conta do fundo municipal, com recibo emitido pelo conselho. A plataforma não recebe nem movimenta recursos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0" aria-labelledby="t-seg">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Segurança e dados</p>
+        <h2 class="titulo" id="t-seg">Os dados pertencem ao município</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="seg">
+        <div><h3>99,5% de disponibilidade</h3><p>Plataforma no ar em pelo menos 99,5% do tempo, a cada mês.</p></div>
+        <div><h3>Servidores no Brasil</h3><p>Hospedagem em nuvem no país, com backups diários e conexão HTTPS.</p></div>
+        <div><h3>LGPD</h3><p>O município é o controlador e a Performance, a operadora dos dados pessoais.</p></div>
+        <div><h3>Dados devolvidos</h3><p>Ao fim do contrato, a base completa é entregue em formato aberto.</p></div>
+        <div><h3>Acessibilidade</h3><p>Área pública conforme o eMAG e a WCAG 2.1, nível AA.</p></div>
+        <div><h3>Suporte técnico</h3><p>De segunda a sexta, das 8h às 18h, por e-mail, telefone e WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="crono" aria-labelledby="t-crono">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Implantação</p>
+        <h2 class="titulo" id="t-crono">A plataforma no ar em 16 semanas</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="semanas" role="img" aria-label="Cronograma de 16 semanas dividido em 7 etapas">
+        <span class="s">1</span><span class="s">2</span><span class="s">3</span><span class="s">4</span><span class="s">5</span><span class="s">6</span><span class="s">7</span><span class="s">8</span><span class="s">9</span><span class="s">10</span><span class="s">11</span><span class="s">12</span><span class="s">13</span><span class="s">14</span><span class="s">15</span><span class="s">16</span>
+        <span class="fase" style="grid-column: span 2">1</span>
+        <span class="fase" style="grid-column: span 3">2</span>
+        <span class="fase" style="grid-column: span 3">3</span>
+        <span class="fase" style="grid-column: span 3">4</span>
+        <span class="fase" style="grid-column: span 2">5</span>
+        <span class="fase" style="grid-column: span 1">6</span>
+        <span class="fase final" style="grid-column: span 2">7</span>
+      </div>
+      <div class="legenda">
+        <div><b>1</b><span>Levantamento dos requisitos<small>Semanas 1 e 2</small></span></div>
+        <div><b>2</b><span>Banco de dados, acessos e perfis<small>Semanas 3 a 5</small></span></div>
+        <div><b>3</b><span>Cadastro de proponentes e projetos<small>Semanas 6 a 8</small></span></div>
+        <div><b>4</b><span>Análise, aprovação e captação<small>Semanas 9 a 11</small></span></div>
+        <div><b>5</b><span>Área pública e manifestação de interesse<small>Semanas 12 e 13</small></span></div>
+        <div><b>6</b><span>Relatórios, painel e integração ao site<small>Semana 14</small></span></div>
+        <div><b>7</b><span>Testes, treinamento e entrada no ar<small>Semanas 15 e 16</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contr" aria-labelledby="t-contr">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Como contratar</p>
+        <h2 class="titulo" id="t-contr">Contratação simples, pagamento por entrega</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="tres">
+        <div><h3>Contratação direta</h3><p>Nos municípios de até 300 mil habitantes, o valor do primeiro ano fica abaixo do limite de dispensa do art. 75, II, da Lei 14.133/2021.</p></div>
+        <div><h3>Pagamento por etapa</h3><p>A implantação é paga em três parcelas, cada uma após a entrega e o aceite da etapa. Não há pagamento antecipado.</p></div>
+        <div><h3>Preço pelo porte</h3><p>Implantação e mensalidade seguem uma tabela única, por faixa de população do município.</p></div>
+      </div>
+      <p class="lead">A proposta pode incluir só o CMDCA, só o CMI ou os dois conselhos no mesmo ambiente.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-mods">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Módulos adicionais</p>
+        <h2 class="titulo" id="t-mods">Para cumprir a Lei 15.426/2026 por inteiro</h2>
+        <span class="fio"></span>
+      </div>
+      <div class="mods">
+        <div><span class="l">A</span><h3>Gestão de membros</h3><p>Mandatos, decretos de nomeação, presença e deveres dos conselheiros previstos na lei, com alerta de vencimento.</p></div>
+        <div><span class="l">B</span><h3>Reuniões e atas</h3><p>Pauta, quórum e votações registrados, com a ata gerada em PDF e publicada no portal.</p></div>
+        <div><span class="l">C</span><h3>Relatório semestral</h3><p>O relatório de atividades exigido pelo art. 260-I do ECA, gerado com os dados da plataforma.</p></div>
+      </div>
+      <p class="obs">Contratados junto com a implantação ou em uma fase seguinte.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0" aria-labelledby="t-quem">
+    <div class="faixa-inner quem-grid">
+      <div>
+        <div class="cabeca">
+          <p class="rotulo">Quem somos</p>
+          <h2 class="titulo" id="t-quem">Performance Gente e Gestão</h2>
+          <span class="fio"></span>
+        </div>
+        <p class="lead">Consultoria em gestão de pessoas, políticas públicas sociais e soluções tecnológicas, com atuação no SUAS e na gestão municipal, em Presidente Prudente (SP).</p>
+        <p class="lead">O Delibera é o produto da Performance para a gestão e a captação de recursos dos conselhos municipais de direitos.</p>
+      </div>
+      <div class="pessoa">
+        <h3>Juliene Aglio Oliveira Parrão</h3>
+        <p>Assistente social, doutora pela PUC-SP</p>
+        <p>Sócia administradora da Performance e responsável pelo Delibera</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="contato" aria-labelledby="t-final">
+    <div class="faixa-inner">
+      <div class="cabeca">
+        <p class="rotulo">Próximos passos</p>
+        <h2 class="titulo" id="t-final"><span id="final-titulo">Como começar no seu município</span></h2>
+        <span class="fio"></span>
+      </div>
+      <div class="prox">
+        <div><b>1</b><span>Apresentação do Delibera ao CMDCA e ao CMI</span></div>
+        <div><b>2</b><span>Resolução do conselho manifestando interesse na plataforma</span></div>
+        <div><b>3</b><span>Proposta formal da Performance, com o valor da faixa do município</span></div>
+      </div>
+      <div class="contato">
+        <div>
+          <p class="nome">Juliene Aglio Oliveira Parrão</p>
+          <p class="dados" id="dados">julieneagliop@gmail.com · (18) 98101-0944</p>
+          <p class="aviso-copia" id="aviso" role="status" aria-live="polite"></p>
+        </div>
+        <div class="acoes">
+          <a class="btn btn-acento" href="https://wa.me/5518981010944?text=Ol%C3%A1%2C%20Juliene.%20Vi%20a%20apresenta%C3%A7%C3%A3o%20do%20Delibera%20e%20quero%20conversar." target="_blank" rel="noopener">Conversar no WhatsApp</a>
+          <button class="btn btn-linha" type="button" id="copiar">Copiar e-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="faixa-inner">
+    <span>Performance - Gente e Gestão Ltda. · CNPJ 42.189.789/0001-10</span>
+    <span>Presidente Prudente (SP)</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* Nome do município pelo link: ...#presidente-prudente */
+  var ACENTOS = { sao: "São", joao: "João", jose: "José", antonio: "Antônio", alvares: "Álvares", tupa: "Tupã", assis: "Assis", maringa: "Maringá", londrina: "Londrina", parana: "Paraná", paranapanema: "Paranapanema", marilia: "Marília", aracatuba: "Araçatuba", ourinhos: "Ourinhos", bauru: "Bauru", candido: "Cândido", estancia: "Estância", sebastiao: "Sebastião", tome: "Tomé", conceicao: "Conceição", goncalves: "Gonçalves" };
+  var MENORES = { de: 1, do: 1, da: 1, dos: 1, das: 1, e: 1 };
+  function nomeDoLink() {
+    var h = (location.hash || "").slice(1);
+    if (!h || !/^[a-z0-9-]{2,60}$/i.test(h) || h === "simulador" || h === "contato") return "";
+    return h.toLowerCase().split("-").filter(Boolean).map(function (p, i) {
+      if (ACENTOS[p]) return ACENTOS[p];
+      if (i > 0 && MENORES[p]) return p;
+      return p.charAt(0).toUpperCase() + p.slice(1);
+    }).join(" ");
+  }
+  function aplicarNome() {
+    var nome = nomeDoLink();
+    var el = document.getElementById("para");
+    var tit = document.getElementById("final-titulo");
+    if (nome) {
+      el.textContent = "Preparado para " + nome;
+      el.hidden = false;
+      tit.textContent = "Como começar em " + nome;
+      document.querySelectorAll(".mun").forEach(function (m) { m.textContent = nome; });
+    }
+  }
+  aplicarNome();
+  window.addEventListener("hashchange", aplicarNome);
+
+  /* Simulador de captação */
+  var META = 120000, BASE = 74400;
+  var fmt = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 0 });
+  var r = document.getElementById("valor-doacao");
+  function reais(v) { return "R$ " + fmt.format(v); }
+  function atualizar() {
+    var v = Number(r.value) || 0;
+    var capt = Math.min(META, BASE + v);
+    var pct = Math.round(capt / META * 100);
+    document.getElementById("b-sim").style.width = ((capt - BASE) / META * 100) + "%";
+    document.getElementById("n-capt").textContent = reais(capt);
+    document.getElementById("n-pct").textContent = pct + "%";
+    document.getElementById("n-saldo").textContent = reais(META - capt);
+    document.getElementById("o-valor").textContent = reais(v);
+    document.getElementById("barra").setAttribute("aria-label", "Captação em " + pct + "% da meta");
+    document.getElementById("frase").innerHTML = v > 0
+      ? "Com mais <em>" + reais(v) + "</em> captados pela proponente, o projeto chega a <em>" + pct + "%</em> da meta."
+      : "Hoje o projeto está em <em>62%</em> da meta. Arraste para simular uma nova captação.";
+  }
+  r.addEventListener("input", atualizar);
+  atualizar();
+
+  /* Abas */
+  var abas = Array.prototype.slice.call(document.querySelectorAll(".aba"));
+  function ativar(aba, foco) {
+    abas.forEach(function (a) {
+      var sel = a === aba;
+      a.setAttribute("aria-selected", sel ? "true" : "false");
+      a.tabIndex = sel ? 0 : -1;
+      document.getElementById(a.getAttribute("aria-controls")).hidden = !sel;
+    });
+    if (foco) aba.focus();
+  }
+  abas.forEach(function (a, i) {
+    a.addEventListener("click", function () { ativar(a, false); });
+    a.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); ativar(abas[(i + 1) % abas.length], true); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); ativar(abas[(i - 1 + abas.length) % abas.length], true); }
+    });
+  });
+
+  /* Copiar e-mail */
+  var aviso = document.getElementById("aviso");
+  document.getElementById("copiar").addEventListener("click", function () {
+    var email = "julieneagliop@gmail.com";
+    function selecionar() {
+      var sel = window.getSelection(), rg = document.createRange();
+      rg.selectNodeContents(document.getElementById("dados"));
+      sel.removeAllRanges(); sel.addRange(rg);
+      aviso.textContent = "Selecionei o contato para você copiar.";
+    }
+    try {
+      navigator.clipboard.writeText(email).then(function () { aviso.textContent = "E-mail copiado."; }, selecionar);
+    } catch (e) { selecionar(); }
+  });
+
+  var calmo = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Movimentos do conselho na capa (exemplo) */
+  var projs = Array.prototype.slice.call(document.querySelectorAll(".livro .proj"));
+  /* [projeto, valor captado a somar (0 = sem captação), descrição] */
+  var eventos = [
+    [1, 0, "Documentação complementar enviada"],
+    [1, 2500, "Captação atualizada pela proponente"],
+    [2, 0, "Relatório de resultados recebido"],
+    [0, 1800, "Captação atualizada pela proponente"],
+    [2, 0, "Projeto aprovado na plenária"],
+    [2, 1500, "Captação atualizada pela proponente"],
+    [0, 0, "Prestação de contas parcial enviada"]
+  ];
+  var avisoVivo = document.getElementById("aviso-vivo");
+  var passo = 0;
+  function chegar() {
+    if (passo >= eventos.length) return;
+    var ev = eventos[passo++], p = projs[ev[0]];
+    var nomeProj = p.querySelector(".proj-nome").textContent;
+    var txt = document.getElementById("av-txt");
+    txt.innerHTML = "<b>" + ev[2] + "</b> · " + nomeProj + (ev[1] ? " · +" + reais(ev[1]) : "");
+    avisoVivo.classList.remove("troca"); void avisoVivo.offsetWidth; avisoVivo.classList.add("troca");
+    projs.forEach(function (x) { x.classList.toggle("sobe", x === p && ev[1] > 0); });
+    if (!ev[1]) { setTimeout(chegar, 4200); return; }
+    var capt = Number(p.dataset.capt) + ev[1], meta = Number(p.dataset.meta);
+    capt = Math.min(capt, meta); p.dataset.capt = capt;
+    var pct = Math.round(capt / meta * 100);
+    p.querySelector(".proj-pct").textContent = pct + "%";
+    p.querySelector(".trilho i").style.width = pct + "%";
+    p.querySelector(".proj-meta").textContent = reais(capt) + " de " + reais(meta) + " · " + p.dataset.fundo;
+    setTimeout(chegar, 4200);
+  }
+  if (!calmo) setTimeout(chegar, 3200);
+
+  /* Relatório semestral (exemplo) */
+  var gerar = document.getElementById("gerar"), doc = document.getElementById("doc");
+  var itens = Array.prototype.slice.call(document.querySelectorAll("#checks li"));
+  var secoes = Array.prototype.slice.call(document.querySelectorAll("#doc details"));
+  gerar.addEventListener("click", function () {
+    gerar.disabled = true;
+    doc.classList.add("gerando");
+    secoes.forEach(function (d, i) { d.open = i === 0; });
+    itens.forEach(function (li) { li.classList.remove("ok"); });
+    var espera = calmo ? 0 : 380;
+    itens.forEach(function (li, i) { setTimeout(function () { li.classList.add("ok"); }, espera * (i + 1)); });
+    setTimeout(function () {
+      doc.classList.remove("gerando");
+      gerar.disabled = false;
+      gerar.textContent = "Gerar de novo";
+    }, espera * (itens.length + 1));
+  });
+
+  /* Painel do conselho (exemplo) */
+  var DADOS = {
+    todos: { ent: 31, proj: 23, capt: 486, media: 58, mes: [31, 40, 48, 57, 236, 74], sit: [6, 3, 15, 8] },
+    cmdca: { ent: 19, proj: 14, capt: 342, media: 61, mes: [22, 28, 34, 40, 168, 50], sit: [4, 2, 9, 5] },
+    cmi: { ent: 12, proj: 9, capt: 144, media: 52, mes: [9, 12, 14, 17, 68, 24], sit: [2, 1, 6, 3] }
+  };
+  var SIT = ["Em análise", "Aguardando complementação", "Em captação", "Concluídos"];
+  var MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"];
+  var NS = "http://www.w3.org/2000/svg", svg = document.getElementById("grafico");
+  var X0 = 20, BASE_Y = 205, ALT = 170, ESC = 260, SLOT = 520 / 6, LARG = 50;
+  var barras = [], valores = [];
+  function el(tag, at) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); return e; }
+  svg.appendChild(el("line", { x1: X0, x2: 540, y1: BASE_Y + .5, y2: BASE_Y + .5, "class": "eixo" }));
+  MESES.forEach(function (m, i) {
+    var x = X0 + i * SLOT + (SLOT - LARG) / 2;
+    var b = el("rect", { x: x, width: LARG, y: BASE_Y, height: 0, "class": "bar" + (i === 4 ? " pico" : "") });
+    var v = el("text", { x: x + LARG / 2, y: BASE_Y - 8, "text-anchor": "middle", "class": "val" });
+    var t = el("text", { x: x + LARG / 2, y: BASE_Y + 26, "text-anchor": "middle", "class": "rot" });
+    t.textContent = m;
+    svg.appendChild(b); svg.appendChild(v); svg.appendChild(t);
+    barras.push(b); valores.push(v);
+  });
+  var sitBox = document.getElementById("situacoes");
+  SIT.forEach(function (s, i) {
+    var d = document.createElement("div");
+    d.className = "sit-linha" + (i === 2 ? " destaque" : "");
+    d.innerHTML = "<span>" + s + "</span><b></b><span class=\"tr\"><i></i></span>";
+    sitBox.appendChild(d);
+  });
+  function mostrar(f) {
+    var d = DADOS[f];
+    document.getElementById("k-ent").textContent = d.ent;
+    document.getElementById("k-proj").textContent = d.proj;
+    document.getElementById("k-capt").textContent = "R$ " + d.capt + " mil";
+    document.getElementById("k-media").textContent = d.media + "%";
+    d.mes.forEach(function (v, i) {
+      var h = v / ESC * ALT;
+      barras[i].style.y = (BASE_Y - h) + "px";
+      barras[i].style.height = h + "px";
+      valores[i].setAttribute("y", BASE_Y - h - 8);
+      valores[i].textContent = v + " mil";
+    });
+    var total = d.sit.reduce(function (a, b) { return a + b; }, 0);
+    Array.prototype.forEach.call(sitBox.children, function (linha, i) {
+      linha.querySelector("b").textContent = d.sit[i];
+      linha.querySelector(".tr i").style.width = (d.sit[i] / total * 100) + "%";
+    });
+    svg.setAttribute("aria-label", "Captação mensal de janeiro a junho, em milhares de reais: " + d.mes.join(", "));
+    document.querySelectorAll(".filtro button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.f === f ? "true" : "false"); });
+  }
+  document.querySelectorAll(".filtro button").forEach(function (b) {
+    b.addEventListener("click", function () { mostrar(b.dataset.f); });
+  });
+  mostrar("todos");
+})();
+</script>
+</body>
+</html>
